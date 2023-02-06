@@ -1,0 +1,19 @@
+/* Michael wants to find out whose salary is the highest*/
+
+Select EmployeeDemographics.EmployeeId, FirstName, LastName,Salary
+From EmployeeDemographics
+Inner Join EmployeeSalary
+ON EmployeeDemographics.EmployeeId = EmployeeSalary.EmployeeId
+Where FirstName <> 'Michael'
+Order By Salary Desc
+
+
+/*Angela wants to find the average salary of the salesman*/
+
+Select JobTitle, AVG(Salary) AS AverageSalary
+From EmployeeDemographics
+Inner Join EmployeeSalary
+ON EmployeeDemographics.EmployeeId = EmployeeSalary.EmployeeId
+Where JobTitle = 'Salesman'
+Group BY JobTitle
+
