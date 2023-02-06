@@ -39,3 +39,87 @@ Insert Into EmployeeSalary VALUES
 (1007, 'Supplier Relations', 41000),
 (1008, 'Salesman', 48000),
 (1009, 'Accountant', 42000)
+
+Select *
+from EmployeeDemographics
+
+Select FirstName
+From EmployeeDemographics
+
+Select Top 5 *
+From EmployeeDemographics
+
+Select Distinct(Gender)
+From EmployeeDemographics
+
+Select Count(Gender)
+From EmployeeDemographics
+
+Select Count(LastName) AS LastNameCount
+From EmployeeDemographics
+
+Select *
+From EmployeeSalary
+
+Select Max(Salary) AS MaxSalary
+From EmployeeSalary
+
+Select Avg(Salary) AS AvgSalary
+From EmployeeSalary
+
+Select *
+from EmployeeDemographics
+Where FirstName = 'Jim'
+
+Select *
+from EmployeeDemographics
+Where FirstName <> 'Jim'
+
+Select *
+from EmployeeDemographics
+Where Age > 30
+
+Select *
+from EmployeeDemographics
+Where Age > 30 AND Gender = 'Male'
+
+Select *
+from EmployeeDemographics
+Where Age > 30 OR Gender = 'Male'
+
+Select *
+from EmployeeDemographics
+Where LastName LIKE 'P%'
+
+Select *
+from EmployeeDemographics
+Where LastName LIKE '%P%'
+ 
+Select *
+from EmployeeDemographics
+Where FirstName IN ('Jim','Michael','Meredith')
+
+Select Gender, Count(Gender) AS CountGender
+From EmployeeDemographics
+Group BY Gender
+
+Select Gender, Age, Count(Gender)
+From EmployeeDemographics
+Group BY Gender, Age
+
+Select Gender, Count(Gender) AS CountGender
+From EmployeeDemographics
+Where Age > 30
+Group BY Gender
+Order By CountGender DESC
+
+Select *
+From EmployeeDemographics
+Where Age > 30
+Order By Age, Gender
+
+Select *
+From EmployeeDemographics
+Where Age > 30
+Order By 5,4
+
