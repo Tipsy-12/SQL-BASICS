@@ -1,0 +1,24 @@
+Select *
+From EmployeeDemographics
+
+Select *
+From EmployeeSalary
+
+Select *
+From EmployeeDemographics
+Join EmployeeSalary
+On EmployeeDemographics.EmployeeId = EmployeeSalary.EmployeeId
+
+/* Partition By */
+
+Select FirstName,LastName,Gender,Salary,
+Count(Gender) Over (Partition By Gender) ToatalGender
+From EmployeeDemographics
+Join EmployeeSalary
+On EmployeeDemographics.EmployeeId = EmployeeSalary.EmployeeId
+
+/* Compare with Group By */
+
+Select Gender,Count(Gender) ToatalGender
+From EmployeeDemographics
+Group By Gender
