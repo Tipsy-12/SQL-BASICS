@@ -1,0 +1,29 @@
+
+/* To find jobtitles that have more than 1 people*/
+
+Select JobTitle, Count(JobTitle) As NumberOfPpl
+From EmployeeDemographics
+Join EmployeeSalary
+On EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+Group By JobTitle
+Having Count(JobTitle) > 1
+
+/* To find average salary of the employees where avg salary is greater than 45000*/
+
+Select JobTitle, Avg(Salary) As AvgSalary
+From EmployeeDemographics
+Join EmployeeSalary
+On EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+Group By JobTitle
+Having Avg(Salary) > 45000
+Order By Avg(Salary)
+
+
+/* Another Way to write the above code*/
+
+Select JobTitle, Avg(Salary) As AvgSalary
+From EmployeeSalary
+Where JobTitle is not null
+Group By JobTitle
+Having Avg(Salary) > 45000
+Order By Avg(Salary)
