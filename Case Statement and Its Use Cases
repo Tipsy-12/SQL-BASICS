@@ -1,0 +1,32 @@
+/* Case statements are useful when you wanna categorize or label things or when doing calculations depending on conditions*/
+
+Select FirstName, LastName, Age,
+Case 
+  When Age > 30 Then 'Old'
+  When Age Between 27 And 30 Then 'Young'
+  Else 'Baby'
+End
+From EmployeeDemographics
+Where Age is Not Null
+Order By Age
+
+
+Select FirstName, LastName, JobTitle, Salary
+From EmployeeDemographics
+Join EmployeeSalary
+On EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+/* We had a fantastic year and corporate has allowed Michael to give out a yearly raise to every single employee.
+   But not every employee is gonna get the same raise. So we're gonna develop a case statement to calculate what 
+   their salaries will be after the raise. */
+
+Select FirstName, LastName, JobTitle, Salary,
+Case
+     When JobTitle = 'Salesman' Then Salary + (Salary * 0.1)
+	   When JobTitle = 'Accountant' Then Salary + (Salary * 0.05)
+	   When JobTitle = 'HR' Then Salary + (Salary * 0.00001)
+	 Else Salary + (Salary * 0.03)
+End AS Salary_After_Raise
+From EmployeeDemographics
+Join EmployeeSalary
+On EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
